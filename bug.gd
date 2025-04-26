@@ -9,4 +9,5 @@ func _physics_process(delta):
 	var new_progress = _follow.get_progress()
 	if new_progress < _last_progress:
 		print("Take damage")
+		get_parent().get_parent().queue_free()
 	_last_progress = new_progress
