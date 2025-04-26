@@ -2,7 +2,8 @@ extends CharacterBody2D
 
 @onready var _follow :PathFollow2D = get_parent()
 var _last_progress = 0
-var _speed :float = 120.0
+@export var _speed :float = 120.0
+@export var _health = 10
 
 func _physics_process(delta):
 	_follow.set_progress(_follow.get_progress() + _speed * delta)
@@ -16,4 +17,7 @@ func _physics_process(delta):
 
 func _on_collision_shape_2d_body_entered(body: Node2D) -> void:
 	body.despawn()
-	queue_free()
+	
+	_health -= body.damage()
+	if _health <= 0:
+		queue_free()
