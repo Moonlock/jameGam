@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://cme6ch38gsfgb"]
+[gd_scene load_steps=7 format=3 uid="uid://cme6ch38gsfgb"]
 
+[ext_resource type="Script" uid="uid://bbogd8r76ie7p" path="res://bug.gd" id="1_byrxq"]
 [ext_resource type="Texture2D" uid="uid://ddc3b7wi705cc" path="res://animBug.png" id="1_mlobg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_byrxq"]
@@ -24,11 +25,11 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_37rhn"]
-radius = 8.0
-height = 45.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_byrxq"]
+height = 58.0
 
 [node name="basicBug" type="CharacterBody2D"]
+script = ExtResource("1_byrxq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_jvpff")
@@ -36,6 +37,10 @@ animation = &"moving"
 autoplay = "moving"
 frame_progress = 0.619678
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="Area2D" parent="."]
 position = Vector2(0, -4)
-shape = SubResource("CapsuleShape2D_37rhn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionShape2D"]
+shape = SubResource("CapsuleShape2D_byrxq")
+
+[connection signal="body_entered" from="CollisionShape2D" to="." method="_on_collision_shape_2d_body_entered"]

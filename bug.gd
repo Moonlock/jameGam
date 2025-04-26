@@ -1,4 +1,4 @@
-extends Sprite2D
+extends CharacterBody2D
 
 @onready var _follow :PathFollow2D = get_parent()
 var _last_progress = 0
@@ -11,3 +11,9 @@ func _physics_process(delta):
 		print("Take damage")
 		get_parent().get_parent().queue_free()
 	_last_progress = new_progress
+	
+
+
+func _on_collision_shape_2d_body_entered(body: Node2D) -> void:
+	body.despawn()
+	queue_free()
