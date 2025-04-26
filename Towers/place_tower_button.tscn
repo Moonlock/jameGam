@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bo3ewv2iadgxw"]
+
+[ext_resource type="Script" uid="uid://bu8mq4tddlrvx" path="res://Towers/place_tower_button.gd" id="1_s4vuj"]
+[ext_resource type="Texture2D" uid="uid://bqcboiu41d7vu" path="res://monsterTop.png" id="2_e7813"]
+
+[node name="PlaceTowerButton" type="Button"]
+text = "Place Tower"
+script = ExtResource("1_s4vuj")
+
+[node name="TowerImage" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.482353)
+texture = ExtResource("2_e7813")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

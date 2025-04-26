@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://buwvqlafeq20v" path="res://thing_jam.gd" id="1_udhia"]
 [ext_resource type="PackedScene" uid="uid://brpgntw6o4oyo" path="res://Towers/monster_tower.tscn" id="2_y3g1b"]
 [ext_resource type="Script" uid="uid://cjeefxfi8r8xj" path="res://timer.gd" id="3_udhia"]
+[ext_resource type="PackedScene" uid="uid://dnq5xscj2u3fk" path="res://path.tscn" id="3_owrrb"]
+[ext_resource type="PackedScene" uid="uid://bo3ewv2iadgxw" path="res://Towers/place_tower_button.tscn" id="3_udhia"]
 
 [node name="thingJam" type="Node2D"]
 script = ExtResource("1_udhia")
@@ -20,3 +22,4 @@ one_shot = true
 
 [connection signal="timeout" from="Timer" to="Timer" method="_on_timer_timeout"]
 [connection signal="timeout" from="Timer/NextPhaseTimer" to="Timer" method="_on_next_phase_timer_timeout"]
+[node name="PlaceTowerButton" parent="." instance=ExtResource("3_udhia")]
