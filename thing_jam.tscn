@@ -1,11 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://bk1ol31gv4shw"]
+[gd_scene load_steps=4 format=3 uid="uid://bk1ol31gv4shw"]
 
+[ext_resource type="Script" uid="uid://buwvqlafeq20v" path="res://thing_jam.gd" id="1_udhia"]
 [ext_resource type="PackedScene" uid="uid://brpgntw6o4oyo" path="res://Towers/monster_tower.tscn" id="2_y3g1b"]
 [ext_resource type="PackedScene" uid="uid://dnq5xscj2u3fk" path="res://path.tscn" id="3_owrrb"]
 
 [node name="thingJam" type="Node2D"]
+script = ExtResource("1_udhia")
 
 [node name="Path2D" parent="." instance=ExtResource("3_owrrb")]
 
 [node name="MonsterTower" parent="." instance=ExtResource("2_y3g1b")]
 position = Vector2(292, 114)
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+
+[editable path="Path2D"]
