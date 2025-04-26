@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bk1ol31gv4shw"]
+
+[ext_resource type="PackedScene" uid="uid://brpgntw6o4oyo" path="res://Towers/monster_tower.tscn" id="2_y3g1b"]
+[ext_resource type="PackedScene" uid="uid://dnq5xscj2u3fk" path="res://path.tscn" id="3_owrrb"]
+
+[node name="thingJam" type="Node2D"]
+
+[node name="Path2D" parent="." instance=ExtResource("3_owrrb")]
+
+[node name="MonsterTower" parent="." instance=ExtResource("2_y3g1b")]
+position = Vector2(292, 114)

@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://dnq5xscj2u3fk"]
+
+[ext_resource type="Script" uid="uid://bbogd8r76ie7p" path="res://bug.gd" id="2_0xr8s"]
+[ext_resource type="PackedScene" uid="uid://cme6ch38gsfgb" path="res://basic_bugAnimated.tscn" id="3_0xr8s"]
+
+[sub_resource type="Curve2D" id="Curve2D_cnff4"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 34, 0, 0, 0, 0, 576, 31.5714, 0, 0, 0, 0, 579, 251.357, 0, 0, 0, 0, 0, 250.143)
+}
+point_count = 4
+
+[node name="Path2D" type="Path2D"]
+position = Vector2(0, 6)
+scale = Vector2(1, 0.823529)
+curve = SubResource("Curve2D_cnff4")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2(0, 34)
+rotation = -0.0042163
+
+[node name="bug" type="Sprite2D" parent="PathFollow2D"]
+script = ExtResource("2_0xr8s")
+
+[node name="basicBug" parent="PathFollow2D/bug" instance=ExtResource("3_0xr8s")]
+rotation = 1.5708
