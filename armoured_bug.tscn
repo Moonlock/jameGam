@@ -1,7 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://huxh1p387pe0"]
+[gd_scene load_steps=8 format=3 uid="uid://b1qld4806p0na"]
 
-[ext_resource type="Script" uid="uid://bpq3jjbbpx1ng" path="res://armoured_bug.gd" id="1_c0rf2"]
-[ext_resource type="Texture2D" uid="uid://whe3iovom4nl" path="res://sprites/animBugArmoured.png" id="1_olatc"]
+[ext_resource type="Script" path="res://armoured_bug.gd" id="1_c0rf2"]
+[ext_resource type="Texture2D" uid="uid://bv0740s3nm73t" path="res://sprites/animBugArmoured.png" id="1_olatc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c0rf2"]
 atlas = ExtResource("1_olatc")

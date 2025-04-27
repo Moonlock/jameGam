@@ -1,4 +1,4 @@
 extends "res://bug.gd"
 
 func _ready() -> void:
-	_health = 50
+	_health = 100

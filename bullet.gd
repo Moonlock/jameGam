@@ -1,7 +1,7 @@
 class_name Bullet extends CharacterBody2D
 
 @export var _damage = 5
-@export var _speed = 400
+@export var _speed = 800
 var _direction = Vector2.RIGHT
 
 func damage():
