@@ -7,7 +7,6 @@ func damage():
 	return _damage
 	
 func handleHit():
-	print("Normal hit")
 	queue_free()
 
 func _physics_process(delta):

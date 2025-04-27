@@ -1,11 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://bk1ol31gv4shw"]
+[gd_scene load_steps=8 format=3 uid="uid://bk1ol31gv4shw"]
 
-[ext_resource type="Script" path="res://thing_jam.gd" id="1_udhia"]
+[ext_resource type="Script" uid="uid://buwvqlafeq20v" path="res://thing_jam.gd" id="1_udhia"]
 [ext_resource type="PackedScene" uid="uid://brpgntw6o4oyo" path="res://Towers/monster_tower.tscn" id="2_y3g1b"]
-[ext_resource type="Script" path="res://timer.gd" id="3_udhia"]
+[ext_resource type="Script" uid="uid://cjeefxfi8r8xj" path="res://timer.gd" id="3_udhia"]
 [ext_resource type="PackedScene" uid="uid://bo3ewv2iadgxw" path="res://Towers/place_tower_button.tscn" id="4_owrrb"]
-[ext_resource type="PackedScene" path="res://fire_bullet.tscn" id="5_hdifc"]
-[ext_resource type="PackedScene" path="res://fire_tower.tscn" id="6_hdifc"]
+[ext_resource type="PackedScene" uid="uid://055im22ulmbc" path="res://fire_bullet.tscn" id="5_hdifc"]
+[ext_resource type="Script" uid="uid://5ld4n0xdiwso" path="res://upgrade_tower_button.gd" id="6_8lc4r"]
+[ext_resource type="PackedScene" uid="uid://bnu0biigwvcgi" path="res://fire_tower.tscn" id="6_hdifc"]
 
 [node name="thingJam" type="Node2D"]
 script = ExtResource("1_udhia")
@@ -28,8 +29,25 @@ position = Vector2(225, 46)
 
 [node name="PlaceTowerButton" parent="CanvasLayer" instance=ExtResource("4_owrrb")]
 
+[node name="UpgradeTowerButton" type="Button" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -218.0
+offset_top = -32.0
+offset_right = -91.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 0
+disabled = true
+text = "Upgrade Tower"
+script = ExtResource("6_8lc4r")
+
 [node name="FireTower" parent="." instance=ExtResource("6_hdifc")]
 position = Vector2(94, 236)
 
 [connection signal="timeout" from="Timer" to="Timer" method="_on_timer_timeout"]
 [connection signal="timeout" from="Timer/NextPhaseTimer" to="Timer" method="_on_next_phase_timer_timeout"]
+[connection signal="pressed" from="CanvasLayer/UpgradeTowerButton" to="CanvasLayer/UpgradeTowerButton" method="_on_pressed"]
