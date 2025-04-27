@@ -9,7 +9,7 @@ func _ready() -> void:
 		self.get_node("Range/CollisionShape2D").get_shape().radius
 		
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if enemy_array.size() != 0 and built:
 		#select_enemy()
 		turn()

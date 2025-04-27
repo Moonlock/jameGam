@@ -4,11 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bqcboiu41d7vu" path="res://monsterTop.png" id="2_lro4s"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lro4s"]
-
-
-
 radius = 300.0
-
 
 [node name="MonsterTower" type="Node2D"]
 script = ExtResource("1_6ujus")
@@ -16,7 +12,6 @@ script = ExtResource("1_6ujus")
 [node name="Monster" type="Sprite2D" parent="."]
 texture = ExtResource("2_lro4s")
 offset = Vector2(0, -13)
-
 
 [node name="FireRateTimer" type="Timer" parent="."]
 autostart = true
@@ -33,14 +28,12 @@ closed = true
 width = 2.0
 default_color = Color(1, 1, 0, 1)
 
-[connection signal="timeout" from="FireRateTimer" to="." method="_on_fire_rate_timer_timeout"]
-[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
-
 [node name="Range" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Range"]
 shape = SubResource("CircleShape2D_lro4s")
 
+[connection signal="timeout" from="FireRateTimer" to="." method="_on_fire_rate_timer_timeout"]
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
 [connection signal="body_entered" from="Range" to="." method="_on_range_body_entered"]
 [connection signal="body_exited" from="Range" to="." method="_on_range_body_exited"]
-
