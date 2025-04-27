@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bnu0biigwvcgi"]
+
+[ext_resource type="Texture2D" uid="uid://bvkhfimmuq4nq" path="res://sprites/fireTower.png" id="1_ou8br"]
+[ext_resource type="Script" uid="uid://bsc4sfcm2qdbf" path="res://fire_tower.gd" id="1_xmto1"]
+
+[node name="FireTower" type="Node2D"]
+script = ExtResource("1_xmto1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_ou8br")
+
+[node name="FireRateTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="FireRateTimer" to="." method="_on_fire_rate_timer_timeout"]
