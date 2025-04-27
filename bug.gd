@@ -32,7 +32,8 @@ func _physics_process(delta):
 	_follow.set_progress(_follow.get_progress() + _speed * delta)
 	var new_progress = _follow.get_progress()
 	if new_progress < _last_progress:
-		get_parent().get_parent().queue_free()
+		SignalManager.emit_signal("take_damage")
+		die()
 	_last_progress = new_progress
 
 func _on_collision_shape_2d_body_entered(body: Node2D) -> void:
@@ -47,4 +48,8 @@ func _on_collision_shape_2d_body_entered(body: Node2D) -> void:
 func take_damage(damage):
 	_health -= damage
 	if _health <= 0:
-		queue_free()
+		die()
+		
+func die():
+	SignalManager.emit_signal("bug_died")
+	get_parent().get_parent().queue_free()

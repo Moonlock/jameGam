@@ -7,12 +7,19 @@ var _cur_phase = 0
 
 var _bug_limit
 var _cur_bugs
+var _bugs_left
 var _bug
 var _final_phase = false
+var _game_over = false
 
 
 func _ready():
+	SignalManager.connect("bug_died", handle_bug_death)
+	SignalManager.connect("game_over", game_over)
 	next_phase()
+
+func game_over():
+	_game_over = true
 
 func next_phase():
 	_cur_phase += 1
@@ -48,17 +55,20 @@ func next_phase():
 func phase1_setup():
 	_bug = load("res://path.tscn")
 	_bug_limit = 3
+	_bugs_left = _bug_limit
 	
 func phase2_setup():
 	_bug = load("res://path.tscn")
 	wait_time = .5
 	_bug_limit = 10
+	_bugs_left += _bug_limit
 	_final_phase = true
 	
 func phase3_setup():
 	_bug = load("res://path.tscn")
 	wait_time = .5
 	_bug_limit = 10
+	_bugs_left += _bug_limit
 	
 func phase4_setup():
 	_bug = load("res://path.tscn")
@@ -95,6 +105,11 @@ func phase10_setup():
 	wait_time = .5
 	_bug_limit = 10
 	
+func handle_bug_death():
+	_bugs_left -= 1
+	if _final_phase and not _bugs_left and not _game_over:
+		win()
+	
 func win():
 	SignalManager.emit_signal("win")
 	
@@ -104,10 +119,10 @@ func _on_timer_timeout() -> void:
 		add_child(bug_instance)
 		_cur_bugs += 1
 	else:
-		get_node("NextPhaseTimer").start()
+		if not _final_phase:
+			get_node("NextPhaseTimer").start()
 		stop()
 
 
 func _on_next_phase_timer_timeout() -> void:
-	if not _final_phase:
-		next_phase()
+	next_phase()
