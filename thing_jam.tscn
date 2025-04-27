@@ -1,10 +1,21 @@
-[gd_scene load_steps=6 format=3 uid="uid://bk1ol31gv4shw"]
+[gd_scene load_steps=9 format=3 uid="uid://bk1ol31gv4shw"]
 
 [ext_resource type="Script" uid="uid://buwvqlafeq20v" path="res://thing_jam.gd" id="1_udhia"]
 [ext_resource type="Script" uid="uid://cjeefxfi8r8xj" path="res://timer.gd" id="3_udhia"]
 [ext_resource type="PackedScene" uid="uid://bo3ewv2iadgxw" path="res://Towers/place_tower_button.tscn" id="4_owrrb"]
+[ext_resource type="Script" uid="uid://cgdmjx8yvo6hg" path="res://win_message.gd" id="5_hdifc"]
 [ext_resource type="Texture2D" uid="uid://cxjlnonjbkmq5" path="res://sprites/base.png" id="5_vgojc"]
 [ext_resource type="Script" uid="uid://5ld4n0xdiwso" path="res://upgrade_tower_button.gd" id="6_8lc4r"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_hdifc"]
+font_size = 60
+font_color = Color(1, 1, 0, 1)
+outline_size = 9
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_vgojc"]
+font_size = 30
+font_color = Color(0, 0, 0, 1)
 
 [node name="thingJam" type="Node2D"]
 script = ExtResource("1_udhia")
@@ -36,6 +47,40 @@ grow_vertical = 0
 disabled = true
 text = "Upgrade Tower"
 script = ExtResource("6_8lc4r")
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+visible = false
+z_index = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -243.0
+offset_top = -69.0
+offset_right = 238.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Congratulations!"
+label_settings = SubResource("LabelSettings_hdifc")
+script = ExtResource("5_hdifc")
+
+[node name="Label2" type="Label" parent="CanvasLayer/Label"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -301.0
+offset_top = 45.0
+offset_right = 311.0
+offset_bottom = 87.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "You have successfully fended off the bugs!"
+label_settings = SubResource("LabelSettings_vgojc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(66, 210)
