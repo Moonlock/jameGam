@@ -23,14 +23,15 @@ visible = false
 modulate = Color(1, 1, 1, 0.482353)
 texture = ExtResource("2_e7813")
 
-[node name="TowerLimitWarning" type="Label" parent="."]
+[node name="WarningLabel" type="Label" parent="."]
 visible = false
 layout_mode = 0
-offset_left = -241.0
-offset_top = 3.0
-offset_right = -79.0
-offset_bottom = 26.0
-theme_override_font_sizes/font_size = 12
+offset_left = -553.0
+offset_top = -3.0
+offset_right = -304.0
+offset_bottom = 31.0
+theme_override_colors/font_color = Color(0.97128, 0.428089, 0.30361, 1)
+theme_override_font_sizes/font_size = 18
 text = "Tower Limit Reached!"
 
 [node name="TowerNumber" type="Label" parent="."]
