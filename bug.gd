@@ -2,6 +2,7 @@ class_name Bug extends CharacterBody2D
 
 @onready var _follow :PathFollow2D = get_parent()
 @onready var fire_scene = preload("res://fire.tscn")
+@onready var bullet_particle_scene = preload("res://bullet_hit_particles.tscn")
 @export var _speed :float = 120.0
 @export var _health = 10
 @export var _fire_interval_sec = 1
@@ -37,6 +38,10 @@ func _physics_process(delta):
 func _on_collision_shape_2d_body_entered(body: Node2D) -> void:
 	if body is Bullet:
 		body.handleHit()
+		if _on_fire == false: # aka just regular bullet
+			var bullet_particles = bullet_particle_scene.instantiate()
+			bullet_particles.emitting = true
+			add_child(bullet_particles)
 		take_damage(body.damage())
 			
 func take_damage(damage):
