@@ -9,3 +9,8 @@ script = ExtResource("1_6ujus")
 [node name="Monster" type="Sprite2D" parent="."]
 texture = ExtResource("2_lro4s")
 offset = Vector2(0, -13)
+
+[node name="FireRateTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="FireRateTimer" to="." method="_on_fire_rate_timer_timeout"]
