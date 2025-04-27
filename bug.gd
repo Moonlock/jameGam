@@ -1,6 +1,7 @@
 class_name Bug extends CharacterBody2D
 
 @onready var _follow :PathFollow2D = get_parent()
+@onready var fire_scene = preload("res://fire.tscn")
 @export var _speed :float = 120.0
 @export var _health = 10
 @export var _fire_interval_sec = 1
@@ -12,6 +13,10 @@ var _on_fire = false
 func catch_fire():
 	print("catch fire")
 	_on_fire = true
+	# add animated fire
+	var fire = fire_scene.instantiate()
+	fire.play("default")
+	add_child(fire)
 	var timer = Timer.new()
 	add_child(timer)
 	timer.wait_time = 1.0

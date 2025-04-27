@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://bk1ol31gv4shw"]
 
-[ext_resource type="Script" uid="uid://buwvqlafeq20v" path="res://thing_jam.gd" id="1_udhia"]
+[ext_resource type="Script" path="res://thing_jam.gd" id="1_udhia"]
 [ext_resource type="PackedScene" uid="uid://brpgntw6o4oyo" path="res://Towers/monster_tower.tscn" id="2_y3g1b"]
-[ext_resource type="Script" uid="uid://cjeefxfi8r8xj" path="res://timer.gd" id="3_udhia"]
-[ext_resource type="PackedScene" path="res://Towers/place_tower_button.tscn" id="4_owrrb"]
-[ext_resource type="PackedScene" uid="uid://055im22ulmbc" path="res://fire_bullet.tscn" id="5_hdifc"]
+[ext_resource type="Script" path="res://timer.gd" id="3_udhia"]
+[ext_resource type="PackedScene" uid="uid://bo3ewv2iadgxw" path="res://Towers/place_tower_button.tscn" id="4_owrrb"]
+[ext_resource type="PackedScene" path="res://fire_bullet.tscn" id="5_hdifc"]
 
 [node name="thingJam" type="Node2D"]
 script = ExtResource("1_udhia")
