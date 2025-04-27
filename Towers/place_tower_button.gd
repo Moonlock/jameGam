@@ -31,20 +31,6 @@ func _on_pressed() -> void:
 			tower_image.show()
 		else:
 			tower_limit_warning.show()
-
-#func _unhandled_input(event: InputEvent) -> void:
-	## if tower in hand and left click, place tower at mouse location
-	#if event.is_action_pressed("ui_accept") and tower_in_hand:
-		## check if tower can be placed on level area
-		#
-		#print(event.position)
-		## place tower at clicked position
-		#var new_tower = tower_scene.instantiate()
-		#new_tower.position = event.position
-		#get_parent().add_child(new_tower)
-		#tower_image.hide()
-		#tower_in_hand = false
-		#print(number_of_towers)
 		
 func _tower_area_clicked(event):
 	if tower_in_hand:
@@ -54,4 +40,3 @@ func _tower_area_clicked(event):
 		get_parent().add_child(new_tower)
 		tower_image.hide()
 		tower_in_hand = false
-		print(number_of_towers)
