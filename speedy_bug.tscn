@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://06q8oypk8ss6"]
+
+[ext_resource type="Texture2D" uid="uid://cpiylq0b3up5g" path="res://sprites/animBugSpeedy.png" id="1_paanq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u0udy"]
+atlas = ExtResource("1_paanq")
+region = Rect2(0, 0, 24, 69)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_10jnf"]
+atlas = ExtResource("1_paanq")
+region = Rect2(24, 0, 24, 69)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iffka"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u0udy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_10jnf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_54551"]
+height = 58.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uc0k0"]
+height = 58.0
+
+[node name="speedy_bug" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_iffka")
+
+[node name="CollisionShape2D" type="Area2D" parent="."]
+position = Vector2(0, -4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionShape2D"]
+shape = SubResource("CapsuleShape2D_54551")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4)
+shape = SubResource("CapsuleShape2D_uc0k0")
