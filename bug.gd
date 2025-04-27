@@ -1,9 +1,26 @@
-extends CharacterBody2D
+class_name Bug extends CharacterBody2D
 
 @onready var _follow :PathFollow2D = get_parent()
-var _last_progress = 0
 @export var _speed :float = 120.0
 @export var _health = 10
+@export var _fire_interval_sec = 1
+@export var _fire_damage = 2
+
+var _last_progress = 0
+var _on_fire = false
+
+func catch_fire():
+	print("catch fire")
+	_on_fire = true
+	var timer = Timer.new()
+	add_child(timer)
+	timer.wait_time = 1.0
+	timer.start()
+	timer.timeout.connect(take_fire_damage)
+	
+func take_fire_damage():
+	print("take fire damage")
+	take_damage(_fire_damage)
 
 func _physics_process(delta):
 	_follow.set_progress(_follow.get_progress() + _speed * delta)
@@ -12,12 +29,13 @@ func _physics_process(delta):
 		print("Take damage")
 		get_parent().get_parent().queue_free()
 	_last_progress = new_progress
-	
-
 
 func _on_collision_shape_2d_body_entered(body: Node2D) -> void:
-	body.despawn()
-	
-	_health -= body.damage()
+	if body is Bullet:
+		body.handleHit()
+		take_damage(body.damage())
+			
+func take_damage(damage):
+	_health -= damage
 	if _health <= 0:
 		queue_free()
