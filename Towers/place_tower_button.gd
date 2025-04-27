@@ -1,13 +1,15 @@
 extends Button
 
-const SPEED = 500
+@export var tower_limit = 4
+var number_of_towers: int = 1
 
 # preload tower scene
 @onready var tower_scene = preload("res://Towers/monster_tower.tscn")
 @onready var tower_image = $TowerImage
+@onready var tower_limit_warning = $TowerLimitWarning
 var tower_in_hand = false
 
-func _process(delta):
+func _process(_delta):
 	if tower_in_hand:
 		var mouse_position = get_viewport().get_mouse_position()
 		tower_image.global_position = mouse_position 
@@ -17,8 +19,11 @@ func _on_pressed() -> void:
 	if tower_in_hand:
 		pass
 	else:
-		tower_in_hand = true
-		tower_image.show()
+		if number_of_towers < tower_limit:
+			tower_in_hand = true
+			tower_image.show()
+		else:
+			tower_limit_warning.show()
 
 func _unhandled_input(event: InputEvent) -> void:
 	# if tower in hand and left click, place tower at mouse location
@@ -29,4 +34,5 @@ func _unhandled_input(event: InputEvent) -> void:
 		get_parent().add_child(new_tower)
 		tower_image.hide()
 		tower_in_hand = false
-		print("Place Tower!")
+		number_of_towers += 1
+		print(number_of_towers)

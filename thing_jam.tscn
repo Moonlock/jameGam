@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" path="res://thing_jam.gd" id="1_udhia"]
 [ext_resource type="PackedScene" uid="uid://brpgntw6o4oyo" path="res://Towers/monster_tower.tscn" id="2_y3g1b"]
-[ext_resource type="PackedScene" uid="uid://dnq5xscj2u3fk" path="res://path.tscn" id="3_owrrb"]
 [ext_resource type="Script" path="res://timer.gd" id="3_udhia"]
-[ext_resource type="PackedScene" path="res://Towers/place_tower_button.tscn" id="4_owrrb"]
+[ext_resource type="PackedScene" uid="uid://bo3ewv2iadgxw" path="res://Towers/place_tower_button.tscn" id="4_owrrb"]
+[ext_resource type="PackedScene" path="res://fire_bullet.tscn" id="5_hdifc"]
 [ext_resource type="PackedScene" path="res://bullet.tscn" id="5_vgojc"]
 
-[node name="Main" type="Node2D"]
+[node name="thingJam" type="Node2D"]
 script = ExtResource("1_udhia")
 
 [node name="MonsterTower" parent="." instance=ExtResource("2_y3g1b")]
@@ -21,13 +21,16 @@ script = ExtResource("3_udhia")
 wait_time = 5.0
 one_shot = true
 
-[node name="PlaceTowerButton" parent="." instance=ExtResource("4_owrrb")]
-
 [node name="Bullet" parent="." instance=ExtResource("5_vgojc")]
+visible = false
 position = Vector2(146, 45)
 
-[node name="Path2D" parent="." instance=ExtResource("3_owrrb")]
-position = Vector2(17, 5)
+[node name="FireBullet" parent="." instance=ExtResource("5_hdifc")]
+position = Vector2(225, 46)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PlaceTowerButton" parent="CanvasLayer" instance=ExtResource("4_owrrb")]
 
 [connection signal="timeout" from="Timer" to="Timer" method="_on_timer_timeout"]
 [connection signal="timeout" from="Timer/NextPhaseTimer" to="Timer" method="_on_next_phase_timer_timeout"]
