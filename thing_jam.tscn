@@ -4,15 +4,23 @@
 [ext_resource type="PackedScene" uid="uid://brpgntw6o4oyo" path="res://Towers/monster_tower.tscn" id="2_y3g1b"]
 [ext_resource type="Script" path="res://timer.gd" id="3_udhia"]
 [ext_resource type="PackedScene" uid="uid://bo3ewv2iadgxw" path="res://Towers/place_tower_button.tscn" id="4_owrrb"]
+
 [ext_resource type="PackedScene" path="res://fire_bullet.tscn" id="5_hdifc"]
 [ext_resource type="Script" path="res://upgrade_tower_button.gd" id="6_8lc4r"]
 [ext_resource type="PackedScene" path="res://fire_tower.tscn" id="6_hdifc"]
+
+
+
 
 [node name="thingJam" type="Node2D"]
 script = ExtResource("1_udhia")
 
 [node name="MonsterTower" parent="." instance=ExtResource("2_y3g1b")]
-position = Vector2(69, 323)
+
+
+
+position = Vector2(468, 201)
+
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true

@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://055im22ulmbc"]
+[gd_scene load_steps=5 format=3 uid="uid://b83urakk70eey"]
 
 [ext_resource type="Script" uid="uid://diu63wm1toyl2" path="res://fire_bullet.gd" id="1_6pcoa"]
-[ext_resource type="Texture2D" uid="uid://2abbwx5svd4e" path="res://sprites/bullet-fire.png" id="1_rkk0k"]
+[ext_resource type="Texture2D" uid="uid://c31utu87px04i" path="res://sprites/bullet-fire.png" id="1_rkk0k"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6pcoa"]
 radius = 17.0294
