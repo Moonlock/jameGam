@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bk1ol31gv4shw"]
+[gd_scene load_steps=6 format=3 uid="uid://bk1ol31gv4shw"]
 
 [ext_resource type="Script" uid="uid://buwvqlafeq20v" path="res://thing_jam.gd" id="1_udhia"]
 [ext_resource type="Script" uid="uid://cjeefxfi8r8xj" path="res://timer.gd" id="3_udhia"]
 [ext_resource type="PackedScene" uid="uid://bo3ewv2iadgxw" path="res://Towers/place_tower_button.tscn" id="4_owrrb"]
+[ext_resource type="Texture2D" uid="uid://cxjlnonjbkmq5" path="res://sprites/base.png" id="5_vgojc"]
 [ext_resource type="Script" uid="uid://5ld4n0xdiwso" path="res://upgrade_tower_button.gd" id="6_8lc4r"]
 
 [node name="thingJam" type="Node2D"]
@@ -35,6 +36,10 @@ grow_vertical = 0
 disabled = true
 text = "Upgrade Tower"
 script = ExtResource("6_8lc4r")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(66, 210)
+texture = ExtResource("5_vgojc")
 
 [connection signal="timeout" from="Timer" to="Timer" method="_on_timer_timeout"]
 [connection signal="timeout" from="Timer/NextPhaseTimer" to="Timer" method="_on_next_phase_timer_timeout"]
