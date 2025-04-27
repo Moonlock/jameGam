@@ -11,10 +11,10 @@ func tower_selected(tower):
 	_selected_tower = tower
 
 func _on_pressed() -> void:
-	position = _selected_tower.position
+	var tower_pos = _selected_tower.position
 	_selected_tower.queue_free()
 	
 	var upgraded = fire_tower.instantiate()
-	upgraded.position = position
+	upgraded.position = tower_pos
 	get_parent().get_parent().add_child(upgraded)
 	
