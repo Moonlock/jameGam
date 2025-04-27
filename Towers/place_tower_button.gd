@@ -1,7 +1,7 @@
 extends Button
 
 @export var tower_limit = 4
-var number_of_towers: int = 1
+var number_of_towers: int = 0
 
 # preload tower scene
 @onready var tower_scene = preload("res://Towers/monster_tower.tscn")
@@ -11,6 +11,7 @@ var number_of_towers: int = 1
 var tower_in_hand = false
 
 func _ready() -> void:
+	SignalManager.connect("tower_area_clicked", _tower_area_clicked)
 	tower_placeable_number.text = str(tower_limit - number_of_towers)
 
 func _process(_delta):
@@ -31,9 +32,22 @@ func _on_pressed() -> void:
 		else:
 			tower_limit_warning.show()
 
-func _unhandled_input(event: InputEvent) -> void:
-	# if tower in hand and left click, place tower at mouse location
-	if event.is_action_pressed("ui_accept") and tower_in_hand:
+#func _unhandled_input(event: InputEvent) -> void:
+	## if tower in hand and left click, place tower at mouse location
+	#if event.is_action_pressed("ui_accept") and tower_in_hand:
+		## check if tower can be placed on level area
+		#
+		#print(event.position)
+		## place tower at clicked position
+		#var new_tower = tower_scene.instantiate()
+		#new_tower.position = event.position
+		#get_parent().add_child(new_tower)
+		#tower_image.hide()
+		#tower_in_hand = false
+		#print(number_of_towers)
+		
+func _tower_area_clicked(event):
+	if tower_in_hand:
 		# place tower at clicked position
 		var new_tower = tower_scene.instantiate()
 		new_tower.position = event.position
