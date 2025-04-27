@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bk1ol31gv4shw"]
+[gd_scene load_steps=15 format=3 uid="uid://bk1ol31gv4shw"]
 
 [ext_resource type="Script" uid="uid://buwvqlafeq20v" path="res://thing_jam.gd" id="1_udhia"]
 [ext_resource type="Script" uid="uid://cjeefxfi8r8xj" path="res://timer.gd" id="3_udhia"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" path="res://level_background.tscn" id="7_8lc4r"]
 [ext_resource type="Script" uid="uid://bxbamwal5ied7" path="res://base.gd" id="7_fdd04"]
 [ext_resource type="PackedScene" uid="uid://dnq5xscj2u3fk" path="res://path.tscn" id="10_qqt7w"]
+[ext_resource type="PackedScene" uid="uid://cjlupiw5q1j7c" path="res://flying_path.tscn" id="11_lgovq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_hdifc"]
 font_size = 60
@@ -118,6 +119,8 @@ script = ExtResource("7_fdd04")
 z_index = -5
 
 [node name="Path2D" parent="." instance=ExtResource("10_qqt7w")]
+
+[node name="FlyingPath" parent="." instance=ExtResource("11_lgovq")]
 
 [connection signal="timeout" from="Timer" to="Timer" method="_on_timer_timeout"]
 [connection signal="timeout" from="Timer/NextPhaseTimer" to="Timer" method="_on_next_phase_timer_timeout"]

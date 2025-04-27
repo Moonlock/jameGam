@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://cjlupiw5q1j7c"]
+
+[sub_resource type="Curve2D" id="Curve2D_upt56"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 632, 0, 0, 0, 0, 1216, 632)
+}
+point_count = 2
+
+[node name="FlyingPath" type="Path2D"]
+curve = SubResource("Curve2D_upt56")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2(0, 632)

@@ -2,7 +2,8 @@ extends Timer
 
 const MAX_PHASE = 10
 @onready var _next_phase_timer = get_node("NextPhaseTimer")
-@onready var _path = preload("res://path.tscn")
+@onready var _normal_path = preload("res://path.tscn")
+@onready var _flying_path = preload("res://flying_path.tscn")
 
 var _cur_phase = 0
 
@@ -12,6 +13,8 @@ var _bugs_left
 var _bug
 var _final_phase = false
 var _game_over = false
+
+var _cur_path_type
 
 var _bugs_left_mutex = Mutex.new()
 
@@ -57,12 +60,14 @@ func next_phase():
 			
 func phase1_setup():
 	_bug = load("res://basic_bugAnimated.tscn")
+	_cur_path_type = _normal_path
 	_bug_limit = 3
 	_bugs_left_mutex.lock()
 	_bugs_left = _bug_limit
 	
 func phase2_setup():
 	_bug = load("res://basic_bugAnimated.tscn")
+	_cur_path_type = _normal_path
 	wait_time = .5
 	_bug_limit = 10
 	_bugs_left_mutex.lock()
@@ -70,6 +75,7 @@ func phase2_setup():
 	
 func phase3_setup():
 	_bug = load("res://armoured_bug.tscn")
+	_cur_path_type = _normal_path
 	wait_time = 1.5
 	_bug_limit = 5
 	_bugs_left_mutex.lock()
@@ -77,6 +83,7 @@ func phase3_setup():
 	
 func phase4_setup():
 	_bug = load("res://basic_bugAnimated.tscn")
+	_cur_path_type = _normal_path
 	wait_time = 1
 	_bug_limit = 7
 	_bugs_left_mutex.lock()
@@ -84,6 +91,7 @@ func phase4_setup():
 	
 func phase5_setup():
 	_bug = load("res://heavy_bug.tscn")
+	_cur_path_type = _normal_path
 	wait_time = 2
 	_bug_limit = 5
 	_bugs_left_mutex.lock()
@@ -91,6 +99,7 @@ func phase5_setup():
 	
 func phase6_setup():
 	_bug = load("res://armoured_bug.tscn")
+	_cur_path_type = _normal_path
 	wait_time = 2.5
 	_bug_limit = 7
 	_bugs_left_mutex.lock()
@@ -98,6 +107,7 @@ func phase6_setup():
 	
 func phase7_setup():
 	_bug = load("res://speedy_bug.tscn")
+	_cur_path_type = _normal_path
 	wait_time = .25
 	_bug_limit = 20
 	_bugs_left_mutex.lock()
@@ -105,6 +115,7 @@ func phase7_setup():
 	
 func phase8_setup():
 	_bug = load("res://basic_bugAnimated.tscn")
+	_cur_path_type = _normal_path
 	wait_time = 1
 	_bug_limit = 10
 	_bugs_left_mutex.lock()
@@ -112,6 +123,7 @@ func phase8_setup():
 	
 func phase9_setup():
 	_bug = load("res://flying_bug.tscn")
+	_cur_path_type = _flying_path
 	wait_time = .75
 	_bug_limit = 12
 	_bugs_left_mutex.lock()
@@ -119,6 +131,7 @@ func phase9_setup():
 	
 func phase10_setup():
 	_bug = load("res://boss_bug.tscn")
+	_cur_path_type = _normal_path
 	wait_time = 2
 	_bug_limit = 3
 	_bugs_left_mutex.lock()
@@ -136,7 +149,7 @@ func win():
 	
 func _on_timer_timeout() -> void:
 	if(_cur_bugs < _bug_limit):
-		var path_instance = _path.instantiate()
+		var path_instance = _cur_path_type.instantiate()
 		var bug_instance = _bug.instantiate()
 		bug_instance.rotation = deg_to_rad(90)
 		path_instance.get_node("PathFollow2D").add_child(bug_instance)
