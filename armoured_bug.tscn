@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://huxh1p387pe0"]
+[gd_scene load_steps=8 format=3 uid="uid://huxh1p387pe0"]
 
+[ext_resource type="Script" uid="uid://bpq3jjbbpx1ng" path="res://armoured_bug.gd" id="1_c0rf2"]
 [ext_resource type="Texture2D" uid="uid://whe3iovom4nl" path="res://sprites/animBugArmoured.png" id="1_olatc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c0rf2"]
@@ -31,6 +32,7 @@ height = 58.0
 height = 58.0
 
 [node name="armoured_bug" type="CharacterBody2D"]
+script = ExtResource("1_c0rf2")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_bh7dh")
@@ -44,3 +46,5 @@ shape = SubResource("CapsuleShape2D_54551")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 position = Vector2(0, -4)
 shape = SubResource("CapsuleShape2D_uc0k0")
+
+[connection signal="body_entered" from="CollisionShape2D" to="." method="_on_collision_shape_2d_body_entered"]
