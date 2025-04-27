@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bnu0biigwvcgi"]
 
-[ext_resource type="Texture2D" uid="uid://m0q0nfnlol6m" path="res://sprites/fireTower.png" id="1_ou8br"]
-[ext_resource type="Script" path="res://fire_tower.gd" id="1_xmto1"]
+[ext_resource type="Texture2D" uid="uid://bvkhfimmuq4nq" path="res://sprites/fireTower.png" id="1_ou8br"]
+[ext_resource type="Script" uid="uid://bsc4sfcm2qdbf" path="res://fire_tower.gd" id="1_xmto1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xmto1"]
 height = 50.0
