@@ -6,4 +6,5 @@ func damage():
 	return _damage
 	
 func handleHit():
+	print("Normal hit")
 	queue_free()

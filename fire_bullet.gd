@@ -9,6 +9,7 @@ func damage():
 	return _damage
 	
 func handleHit():
+	print("Fire hit")
 	var colliders = fire_collision.get_overlapping_bodies()
 	print("Colliders = ", colliders.size())
 	for collider in colliders:
