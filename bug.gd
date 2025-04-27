@@ -15,8 +15,10 @@ func catch_fire():
 	_on_fire = true
 	# add animated fire
 	var fire = fire_scene.instantiate()
+	fire.rotation = -PI/2
 	fire.play("default")
 	add_child(fire)
+	# add timer for fire damage
 	var timer = Timer.new()
 	add_child(timer)
 	timer.wait_time = 1.0

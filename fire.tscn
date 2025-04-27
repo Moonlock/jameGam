@@ -39,5 +39,6 @@ animations = [{
 }]
 
 [node name="Fire" type="AnimatedSprite2D"]
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_r2yji")
-frame_progress = 0.612176
+frame_progress = 0.53739
