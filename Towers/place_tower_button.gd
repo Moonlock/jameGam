@@ -7,7 +7,11 @@ var number_of_towers: int = 1
 @onready var tower_scene = preload("res://Towers/monster_tower.tscn")
 @onready var tower_image = $TowerImage
 @onready var tower_limit_warning = $TowerLimitWarning
+@onready var tower_placeable_number = $TowerNumber
 var tower_in_hand = false
+
+func _ready() -> void:
+	tower_placeable_number.text = str(tower_limit - number_of_towers)
 
 func _process(_delta):
 	if tower_in_hand:
@@ -20,6 +24,8 @@ func _on_pressed() -> void:
 		pass
 	else:
 		if number_of_towers < tower_limit:
+			number_of_towers += 1
+			tower_placeable_number.text = str(tower_limit - number_of_towers)
 			tower_in_hand = true
 			tower_image.show()
 		else:
@@ -34,5 +40,4 @@ func _unhandled_input(event: InputEvent) -> void:
 		get_parent().add_child(new_tower)
 		tower_image.hide()
 		tower_in_hand = false
-		number_of_towers += 1
 		print(number_of_towers)

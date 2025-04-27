@@ -15,7 +15,7 @@ offset_right = 50.5
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_vertical = 8
-text = "Place Tower"
+text = "Place Tower     "
 script = ExtResource("1_s4vuj")
 
 [node name="TowerImage" type="Sprite2D" parent="."]
@@ -32,5 +32,14 @@ offset_right = -79.0
 offset_bottom = 26.0
 theme_override_font_sizes/font_size = 12
 text = "Tower Limit Reached!"
+
+[node name="TowerNumber" type="Label" parent="."]
+layout_mode = 0
+offset_left = 105.0
+offset_top = 4.0
+offset_right = 145.0
+offset_bottom = 27.0
+theme_override_colors/font_color = Color(0.462775, 0.814279, 0.223541, 1)
+text = "0"
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]
