@@ -21,7 +21,7 @@ func select_enemy():
 	
 
 func turn():
-	get_node("Monster").look_at(enemy_array[0].global_position)
+	get_node("Tower").look_at(enemy_array[0].global_position)
 
 func _on_range_body_entered(body: Node2D) -> void:
 	enemy_array.append(body)

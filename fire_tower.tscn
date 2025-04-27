@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bnu0biigwvcgi"]
+[gd_scene load_steps=5 format=3 uid="uid://bnu0biigwvcgi"]
 
 [ext_resource type="Texture2D" uid="uid://bvkhfimmuq4nq" path="res://sprites/fireTower.png" id="1_ou8br"]
 [ext_resource type="Script" uid="uid://bsc4sfcm2qdbf" path="res://fire_tower.gd" id="1_xmto1"]
@@ -6,10 +6,13 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xmto1"]
 height = 50.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_xmto1"]
+radius = 150.0
+
 [node name="FireTower" type="Node2D"]
 script = ExtResource("1_xmto1")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Tower" type="Sprite2D" parent="."]
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("1_ou8br")
 
@@ -17,9 +20,9 @@ texture = ExtResource("1_ou8br")
 wait_time = 2.0
 autostart = true
 
-[node name="Range" type="Area2D" parent="."]
+[node name="ClickableHitBox" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Range"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClickableHitBox"]
 shape = SubResource("CapsuleShape2D_xmto1")
 
 [node name="Line2D" type="Line2D" parent="."]
@@ -29,5 +32,12 @@ closed = true
 width = 2.0
 default_color = Color(1, 1, 0, 1)
 
+[node name="Range" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Range"]
+shape = SubResource("CircleShape2D_xmto1")
+
 [connection signal="timeout" from="FireRateTimer" to="." method="_on_fire_rate_timer_timeout"]
-[connection signal="input_event" from="Range" to="." method="_on_area_2d_input_event"]
+[connection signal="input_event" from="ClickableHitBox" to="." method="_on_area_2d_input_event"]
+[connection signal="body_entered" from="Range" to="." method="_on_range_body_entered"]
+[connection signal="body_exited" from="Range" to="." method="_on_range_body_exited"]
