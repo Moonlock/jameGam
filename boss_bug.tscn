@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://dkwnuaygq2n0p"]
+[gd_scene load_steps=8 format=3 uid="uid://dkwnuaygq2n0p"]
 
+[ext_resource type="Script" uid="uid://cxf0yppvsfcwv" path="res://boss_bug.gd" id="1_ujp3q"]
 [ext_resource type="Texture2D" uid="uid://53d1oac8cmjd" path="res://sprites/animBugBoss.png" id="1_vg407"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ujp3q"]
@@ -31,6 +32,7 @@ height = 58.0
 height = 58.0
 
 [node name="boss_bug" type="CharacterBody2D"]
+script = ExtResource("1_ujp3q")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_utf8v")

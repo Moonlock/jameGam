@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://btmhe2pdroq01"]
+[gd_scene load_steps=8 format=3 uid="uid://btmhe2pdroq01"]
 
+[ext_resource type="Script" uid="uid://dbc2w7qf1vx0w" path="res://heavy_bug.gd" id="1_m3cd3"]
 [ext_resource type="Texture2D" uid="uid://cogieds8fshl4" path="res://sprites/animBugHeavy.png" id="1_rere6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m3cd3"]
@@ -31,6 +32,7 @@ height = 58.0
 height = 58.0
 
 [node name="heavy_bug" type="CharacterBody2D"]
+script = ExtResource("1_m3cd3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_33n1h")

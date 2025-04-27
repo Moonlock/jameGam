@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://06q8oypk8ss6"]
+[gd_scene load_steps=8 format=3 uid="uid://06q8oypk8ss6"]
 
 [ext_resource type="Texture2D" uid="uid://cpiylq0b3up5g" path="res://sprites/animBugSpeedy.png" id="1_paanq"]
+[ext_resource type="Script" uid="uid://dgyiworn0pby7" path="res://speedy_bug.gd" id="1_u0udy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u0udy"]
 atlas = ExtResource("1_paanq")
@@ -31,6 +32,7 @@ height = 58.0
 height = 58.0
 
 [node name="speedy_bug" type="CharacterBody2D"]
+script = ExtResource("1_u0udy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_iffka")

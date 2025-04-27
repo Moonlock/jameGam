@@ -1,1 +1,1 @@
-extends CharacterBody2D
+extends "res://bug.gd"

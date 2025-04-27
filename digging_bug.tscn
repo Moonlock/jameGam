@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://do0cklqtvb6vf"]
+[gd_scene load_steps=8 format=3 uid="uid://do0cklqtvb6vf"]
 
 [ext_resource type="Texture2D" uid="uid://2aypiola5w6" path="res://sprites/animBugDig.png" id="1_360jv"]
+[ext_resource type="Script" uid="uid://c1ua28nhh8703" path="res://digging_bug.gd" id="1_viwep"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_viwep"]
 atlas = ExtResource("1_360jv")
@@ -31,6 +32,7 @@ height = 58.0
 height = 58.0
 
 [node name="digging_bug" type="CharacterBody2D"]
+script = ExtResource("1_viwep")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_c2lbm")
