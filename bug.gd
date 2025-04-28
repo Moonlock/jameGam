@@ -8,6 +8,9 @@ class_name Bug extends CharacterBody2D
 @export var _fire_interval_sec = 1
 @export var _fire_damage = 2
 
+var _mutex = Mutex.new()
+var _dead = false
+
 var _last_progress = 0
 var _on_fire = false
 
@@ -47,7 +50,9 @@ func _on_collision_shape_2d_body_entered(body: Node2D) -> void:
 			
 func take_damage(damage):
 	_health -= damage
-	if _health <= 0:
+	_mutex.lock()
+	if _health <= 0 and not _dead:
+		_dead = true
 		die()
 		
 func die():

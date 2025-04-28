@@ -16,8 +16,6 @@ var _game_over = false
 
 var _cur_path_type
 
-var _bugs_left_mutex = Mutex.new()
-
 
 func _ready():
 	SignalManager.connect("bug_died", handle_bug_death)
@@ -62,7 +60,6 @@ func phase1_setup():
 	_bug = load("res://basic_bugAnimated.tscn")
 	_cur_path_type = _normal_path
 	_bug_limit = 3
-	_bugs_left_mutex.lock()
 	_bugs_left = _bug_limit
 	
 func phase2_setup():
@@ -70,7 +67,6 @@ func phase2_setup():
 	_cur_path_type = _normal_path
 	wait_time = .5
 	_bug_limit = 10
-	_bugs_left_mutex.lock()
 	_bugs_left += _bug_limit
 	
 func phase3_setup():
@@ -78,7 +74,6 @@ func phase3_setup():
 	_cur_path_type = _normal_path
 	wait_time = 1.5
 	_bug_limit = 5
-	_bugs_left_mutex.lock()
 	_bugs_left += _bug_limit
 	
 func phase4_setup():
@@ -86,7 +81,6 @@ func phase4_setup():
 	_cur_path_type = _normal_path
 	wait_time = 1
 	_bug_limit = 7
-	_bugs_left_mutex.lock()
 	_bugs_left += _bug_limit
 	
 func phase5_setup():
@@ -94,7 +88,6 @@ func phase5_setup():
 	_cur_path_type = _normal_path
 	wait_time = 2
 	_bug_limit = 5
-	_bugs_left_mutex.lock()
 	_bugs_left += _bug_limit
 	
 func phase6_setup():
@@ -102,7 +95,6 @@ func phase6_setup():
 	_cur_path_type = _normal_path
 	wait_time = 2.5
 	_bug_limit = 7
-	_bugs_left_mutex.lock()
 	_bugs_left += _bug_limit
 	
 func phase7_setup():
@@ -110,7 +102,6 @@ func phase7_setup():
 	_cur_path_type = _normal_path
 	wait_time = .25
 	_bug_limit = 20
-	_bugs_left_mutex.lock()
 	_bugs_left += _bug_limit
 	
 func phase8_setup():
@@ -118,7 +109,6 @@ func phase8_setup():
 	_cur_path_type = _normal_path
 	wait_time = 1
 	_bug_limit = 10
-	_bugs_left_mutex.lock()
 	_bugs_left += _bug_limit
 	
 func phase9_setup():
@@ -126,7 +116,6 @@ func phase9_setup():
 	_cur_path_type = _flying_path
 	wait_time = .75
 	_bug_limit = 12
-	_bugs_left_mutex.lock()
 	_bugs_left += _bug_limit
 	
 func phase10_setup():
@@ -134,14 +123,12 @@ func phase10_setup():
 	_cur_path_type = _normal_path
 	wait_time = 2
 	_bug_limit = 3
-	_bugs_left_mutex.lock()
 	_bugs_left += _bug_limit
 	_final_phase = true
 	
 func handle_bug_death():
-	_bugs_left_mutex.lock()
 	_bugs_left -= 1
-	if _final_phase and not _bugs_left and not _game_over:
+	if _final_phase and _bugs_left <= 0 and not _game_over:
 		win()
 	
 func win():
