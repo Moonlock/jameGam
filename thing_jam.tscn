@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bk1ol31gv4shw"]
+[gd_scene load_steps=15 format=3 uid="uid://bk1ol31gv4shw"]
 
 [ext_resource type="Script" uid="uid://buwvqlafeq20v" path="res://thing_jam.gd" id="1_udhia"]
 [ext_resource type="Script" uid="uid://cjeefxfi8r8xj" path="res://timer.gd" id="3_udhia"]
@@ -9,11 +9,6 @@
 [ext_resource type="Script" uid="uid://dtkhl68ui2v64" path="res://game_over.gd" id="6_o518t"]
 [ext_resource type="PackedScene" uid="uid://bgmi1nprbfk80" path="res://level_background.tscn" id="7_8lc4r"]
 [ext_resource type="Script" uid="uid://bxbamwal5ied7" path="res://base.gd" id="7_fdd04"]
-[ext_resource type="PackedScene" uid="uid://dnq5xscj2u3fk" path="res://path.tscn" id="10_qqt7w"]
-[ext_resource type="PackedScene" uid="uid://cjlupiw5q1j7c" path="res://flying_path.tscn" id="11_lgovq"]
-[ext_resource type="PackedScene" path="res://towerFlamer.tscn" id="12_8n4x1"]
-[ext_resource type="PackedScene" path="res://towerBasic.tscn" id="13_lb5ar"]
-[ext_resource type="PackedScene" path="res://towerShotgun.tscn" id="14_jlvl3"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_hdifc"]
 font_size = 60
@@ -34,6 +29,12 @@ outline_color = Color(0, 0, 0, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_lgovq"]
 font_size = 25
 font_color = Color(0, 0.603922, 1, 1)
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_o518t"]
+font_size = 30
+font_color = Color(1, 0, 0, 1)
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 
@@ -127,6 +128,7 @@ script = ExtResource("7_fdd04")
 [node name="ResourceTimer" type="Timer" parent="Base"]
 
 [node name="Resources" type="Label" parent="Base"]
+visible = false
 offset_left = -39.0
 offset_top = -89.0
 offset_right = 33.0
@@ -135,21 +137,17 @@ text = "100"
 label_settings = SubResource("LabelSettings_lgovq")
 horizontal_alignment = 1
 
+[node name="Health" type="Label" parent="Base"]
+offset_left = -63.0
+offset_top = -83.0
+offset_right = 49.0
+offset_bottom = -41.0
+text = "10"
+label_settings = SubResource("LabelSettings_o518t")
+horizontal_alignment = 1
+
 [node name="LevelBackground" parent="." instance=ExtResource("7_8lc4r")]
 z_index = -5
-
-[node name="Path2D" parent="." instance=ExtResource("10_qqt7w")]
-
-[node name="FlyingPath" parent="." instance=ExtResource("11_lgovq")]
-
-[node name="Node2D" parent="." instance=ExtResource("12_8n4x1")]
-position = Vector2(672, 515)
-
-[node name="Node2D2" parent="." instance=ExtResource("13_lb5ar")]
-position = Vector2(112, 494)
-
-[node name="Node2D3" parent="." instance=ExtResource("14_jlvl3")]
-position = Vector2(38, 535)
 
 [connection signal="timeout" from="Timer" to="Timer" method="_on_timer_timeout"]
 [connection signal="timeout" from="Timer/NextPhaseTimer" to="Timer" method="_on_next_phase_timer_timeout"]

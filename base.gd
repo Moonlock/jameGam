@@ -1,6 +1,7 @@
 extends Sprite2D
 
 @onready var _resource_label = $Resources
+@onready var _health_label = $Health
 
 @export var _health = 10
 @export var _income = 5
@@ -15,9 +16,11 @@ func _ready():
 	$ResourceTimer.start()
 	
 func take_damage():
-	_health -= 1
-	if _health == 0:
-		SignalManager.emit_signal("game_over")
+	if _health > 0:
+		_health -= 1
+		_health_label.text = str(_health)
+		if _health == 0:
+			SignalManager.emit_signal("game_over")
 		
 func get_gold():
 	return _gold
