@@ -1,6 +1,7 @@
 extends Button
 
 @export var tower_limit = 4
+@export var new_tower_cost = 100
 var number_of_towers: int = 0
 
 # preload basic starter tower scene

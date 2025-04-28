@@ -8,3 +8,8 @@ signal tower_placed
 signal bug_died
 signal take_damage
 signal game_over
+
+signal can_afford_tower
+signal cannot_afford_tower
+signal can_afford_upgrade
+signal cannot_afford_upgrade

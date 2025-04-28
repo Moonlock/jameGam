@@ -1,19 +1,19 @@
-[gd_scene load_steps=18 format=3 uid="uid://bk1ol31gv4shw"]
+[gd_scene load_steps=19 format=3 uid="uid://bk1ol31gv4shw"]
 
-[ext_resource type="Script" path="res://thing_jam.gd" id="1_udhia"]
+[ext_resource type="Script" uid="uid://buwvqlafeq20v" path="res://thing_jam.gd" id="1_udhia"]
 [ext_resource type="Script" uid="uid://cjeefxfi8r8xj" path="res://timer.gd" id="3_udhia"]
 [ext_resource type="PackedScene" uid="uid://bo3ewv2iadgxw" path="res://Towers/place_tower_button.tscn" id="4_owrrb"]
-[ext_resource type="Script" path="res://win_message.gd" id="5_hdifc"]
-[ext_resource type="Texture2D" uid="uid://dws1yn4wbhhgq" path="res://sprites/base.png" id="5_vgojc"]
-[ext_resource type="Script" path="res://upgrade_tower_button.gd" id="6_8lc4r"]
+[ext_resource type="Script" uid="uid://cgdmjx8yvo6hg" path="res://win_message.gd" id="5_hdifc"]
+[ext_resource type="Texture2D" uid="uid://cxjlnonjbkmq5" path="res://sprites/base.png" id="5_vgojc"]
+[ext_resource type="Script" uid="uid://5ld4n0xdiwso" path="res://upgrade_tower_button.gd" id="6_8lc4r"]
 [ext_resource type="Script" uid="uid://dtkhl68ui2v64" path="res://game_over.gd" id="6_o518t"]
 [ext_resource type="PackedScene" uid="uid://bgmi1nprbfk80" path="res://level_background.tscn" id="7_8lc4r"]
 [ext_resource type="Script" uid="uid://bxbamwal5ied7" path="res://base.gd" id="7_fdd04"]
 [ext_resource type="PackedScene" uid="uid://dnq5xscj2u3fk" path="res://path.tscn" id="10_qqt7w"]
 [ext_resource type="PackedScene" uid="uid://cjlupiw5q1j7c" path="res://flying_path.tscn" id="11_lgovq"]
-[ext_resource type="PackedScene" uid="uid://cmaptuqkdv5en" path="res://towerFlamer.tscn" id="12_8n4x1"]
-[ext_resource type="PackedScene" uid="uid://cxrx5bquijb6g" path="res://towerBasic.tscn" id="13_lb5ar"]
-[ext_resource type="PackedScene" uid="uid://c3fsqprfiv3mj" path="res://towerShotgun.tscn" id="14_jlvl3"]
+[ext_resource type="PackedScene" path="res://towerFlamer.tscn" id="12_8n4x1"]
+[ext_resource type="PackedScene" path="res://towerBasic.tscn" id="13_lb5ar"]
+[ext_resource type="PackedScene" path="res://towerShotgun.tscn" id="14_jlvl3"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_hdifc"]
 font_size = 60
@@ -29,6 +29,12 @@ font_color = Color(0, 0, 0, 1)
 font_size = 60
 font_color = Color(0.905269, 3.34509e-06, 1.15514e-06, 1)
 outline_size = 9
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_lgovq"]
+font_size = 25
+font_color = Color(0, 0.603922, 1, 1)
+outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 
 [node name="thingJam" type="Node2D"]
@@ -118,6 +124,17 @@ position = Vector2(1215, 635)
 texture = ExtResource("5_vgojc")
 script = ExtResource("7_fdd04")
 
+[node name="ResourceTimer" type="Timer" parent="Base"]
+
+[node name="Resources" type="Label" parent="Base"]
+offset_left = -39.0
+offset_top = -89.0
+offset_right = 33.0
+offset_bottom = -54.0
+text = "100"
+label_settings = SubResource("LabelSettings_lgovq")
+horizontal_alignment = 1
+
 [node name="LevelBackground" parent="." instance=ExtResource("7_8lc4r")]
 z_index = -5
 
@@ -137,3 +154,4 @@ position = Vector2(38, 535)
 [connection signal="timeout" from="Timer" to="Timer" method="_on_timer_timeout"]
 [connection signal="timeout" from="Timer/NextPhaseTimer" to="Timer" method="_on_next_phase_timer_timeout"]
 [connection signal="pressed" from="CanvasLayer/UpgradeTowerButton" to="CanvasLayer/UpgradeTowerButton" method="_on_pressed"]
+[connection signal="timeout" from="Base/ResourceTimer" to="Base" method="_on_resource_timer_timeout"]
