@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://c3fsqprfiv3mj"]
+
+[ext_resource type="Texture2D" uid="uid://334eppqemqqq" path="res://sprites/towerBase.png" id="1_i64n2"]
+[ext_resource type="Script" uid="uid://c5qnr4w2e4dsv" path="res://tower_shotgun.gd" id="1_ulwjw"]
+[ext_resource type="Texture2D" uid="uid://5dfkflj8xurb" path="res://sprites/shotgunTowerTurret.png" id="2_ulwjw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2mv6a"]
+radius = 125.0
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_ulwjw")
+
+[node name="Base" type="Sprite2D" parent="."]
+texture = ExtResource("1_i64n2")
+
+[node name="Tower" type="Sprite2D" parent="."]
+texture = ExtResource("2_ulwjw")
+offset = Vector2(9, 0)
+
+[node name="Range" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Range"]
+shape = SubResource("CircleShape2D_2mv6a")

@@ -4,11 +4,19 @@
 [ext_resource type="Script" uid="uid://cjeefxfi8r8xj" path="res://timer.gd" id="3_udhia"]
 [ext_resource type="PackedScene" uid="uid://bo3ewv2iadgxw" path="res://Towers/place_tower_button.tscn" id="4_owrrb"]
 [ext_resource type="Script" path="res://win_message.gd" id="5_hdifc"]
+
 [ext_resource type="Texture2D" uid="uid://odnstmoitp0m" path="res://sprites/base.png" id="5_vgojc"]
 [ext_resource type="Script" uid="uid://5ld4n0xdiwso" path="res://upgrade_tower_button.gd" id="6_8lc4r"]
 [ext_resource type="Script" path="res://game_over.gd" id="6_o518t"]
 [ext_resource type="PackedScene" uid="uid://bgmi1nprbfk80" path="res://level_background.tscn" id="7_8lc4r"]
 [ext_resource type="Script" path="res://base.gd" id="7_fdd04"]
+
+
+
+
+
+
+
 [ext_resource type="PackedScene" uid="uid://dnq5xscj2u3fk" path="res://path.tscn" id="10_qqt7w"]
 [ext_resource type="PackedScene" uid="uid://cjlupiw5q1j7c" path="res://flying_path.tscn" id="11_lgovq"]
 
