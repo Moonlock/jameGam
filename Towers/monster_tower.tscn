@@ -1,7 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://brpgntw6o4oyo"]
+[gd_scene load_steps=5 format=3 uid="uid://brpgntw6o4oyo"]
 
 [ext_resource type="Script" uid="uid://cdb4wlwue8kg0" path="res://Towers/monster_tower.gd" id="1_6ujus"]
 [ext_resource type="Texture2D" uid="uid://bqcboiu41d7vu" path="res://monsterTop.png" id="2_lro4s"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ogxv3"]
+radius = 48.1664
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lro4s"]
 radius = 300.0
@@ -19,7 +22,7 @@ autostart = true
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_lro4s")
+shape = SubResource("CircleShape2D_ogxv3")
 
 [node name="Line2D" type="Line2D" parent="."]
 visible = false
@@ -29,6 +32,7 @@ width = 2.0
 default_color = Color(1, 1, 0, 1)
 
 [node name="Range" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Range"]
 shape = SubResource("CircleShape2D_lro4s")

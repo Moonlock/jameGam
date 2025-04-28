@@ -248,4 +248,3 @@ modulate = Color(0.560784, 1, 0.607843, 0.454902)
 polygon = PackedVector2Array(654, 535, 690, 535, 691, 34, 1209, 35, 1210, 540, 1280, 541, 1279, 0, 0, 0, -6, 517, 135, 517, 135, 33, 654, 34)
 
 [connection signal="input_event" from="TowerArea" to="." method="_on_tower_area_input_event"]
-[connection signal="input_event" from="TowerArea" to="TowerArea" method="_on_input_event"]
